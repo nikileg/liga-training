@@ -9,13 +9,13 @@
         <result property="title" column="title"/>
         <result property="address" column="address"/>
         <result property="foundationYear" column="foundation_year"/>
-        <collection
-                property="employees"
-                javaType="List"
-                column="id"
-                ofType="EmployeeEntity"
-                select="ru.liga.mybatis.dao.EmployeeDao.selectByDepartmentId"
-        />
+        <!--<collection-->
+                <!--property="название поля"-->
+                <!--javaType="тип которй должен быть на выходе"-->
+                <!--column="колонка по которой мы связываем дочерние сущности"-->
+                <!--ofType="название связываемой Entity"-->
+                <!--select="метод, который верент список"-->
+        <!--/>-->
     </resultMap>
 
     <delete id="delete" parameterType="long">
