@@ -1,5 +1,8 @@
 package ru.liga.hibernate.dao;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.liga.hibernate.entity.DepartmentEntity;
@@ -14,6 +17,8 @@ public class DefaultDepartmentDao implements DepartmentDao {
 
     @PersistenceContext
     private EntityManager em;
+    @Autowired
+    private SessionFactory sessionFactory;
 
     @Override
     public void save(DepartmentEntity entity) {
@@ -44,5 +49,12 @@ public class DefaultDepartmentDao implements DepartmentDao {
                 .setParameter("title", title)
                 .getResultList()
                 .get(0);
+    }
+
+    @Override
+    public DepartmentEntity selectById(Long id) {
+        try (Session session = sessionFactory.openSession()) {
+           return session.get(DepartmentEntity.class, id);
+        }
     }
 }

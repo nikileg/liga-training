@@ -22,8 +22,16 @@ public class DepartmentDaoTest {
     private DepartmentDao departmentDao;
 
     @Test
-    public void findByIdTest() {
+    public void selectTest() {
         DepartmentEntity entity = departmentDao.select(0L);
+        assertEquals("Механико-математический", entity.getTitle());
+        assertEquals("119991, ГСП-1, Москва, Ленинские горы, МГУ, д.1, Главное здание, механико-математический факультет", entity.getAddress());
+        assertEquals(5, entity.getEmployees().size());
+        assertEquals(Integer.valueOf(1932), entity.getFoundationYear());
+    }
+    @Test
+    public void selectByIdTest() {
+        DepartmentEntity entity = departmentDao.selectById(0L);
         assertEquals("Механико-математический", entity.getTitle());
         assertEquals("119991, ГСП-1, Москва, Ленинские горы, МГУ, д.1, Главное здание, механико-математический факультет", entity.getAddress());
         assertEquals(5, entity.getEmployees().size());
@@ -31,7 +39,7 @@ public class DepartmentDaoTest {
     }
 
     @Test
-    public void findByIdFoundationYear() {
+    public void selectByFoundationYearTest() {
         List<DepartmentEntity> entities = departmentDao.selectByFoundationYear(1934);
         assertEquals(1, entities.size());
     }
