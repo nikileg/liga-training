@@ -46,14 +46,14 @@
                 <database.url>jdbc:postgresql://127.0.0.1:5432/postgres?currentSchema=liga</database.url>
                 <database.driver>org.postgresql.Driver</database.driver>
                 <database.user>postgres</database.user>
-                <database.password>q</database.password>
+                <database.password>postgres</database.password>
                 <database.schema>liga</database.schema>
             </properties>
         </profile>
         <profile>
             <id>sqlite</id>
             <properties>
-                <database.url>jdbc:sqlite:C:/projects/liga-training/botdb.s3db</database.url>
+                <database.url>jdbc:sqlite:C:/liga-training/botdb.s3db</database.url>
                 <database.driver>org.sqlite.JDBC</database.driver>
                 <database.user></database.user>
                 <database.password></database.password>

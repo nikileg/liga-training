@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface EmployeeDao {
 
-    EmployeeEntity insert(EmployeeEntity entity);
+    int insert(EmployeeEntity entity);
 
-    EmployeeEntity update(EmployeeEntity entity);
+    int update(EmployeeEntity entity);
 
     void delete(Long entityId);
 

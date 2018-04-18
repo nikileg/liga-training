@@ -6,19 +6,47 @@ public class StudentEntity {
     private Long id;
     private String fio;
     private String gender;
-    private String department;
-    private String studentGroupId;
+    private Long department_id;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        StudentEntity entity = (StudentEntity) o;
+
+        if (id != null ? !id.equals(entity.id) : entity.id != null) return false;
+        if (fio != null ? !fio.equals(entity.fio) : entity.fio != null) return false;
+        if (gender != null ? !gender.equals(entity.gender) : entity.gender != null) return false;
+        if (department_id != null ? !department_id.equals(entity.department_id) : entity.department_id != null)
+            return false;
+        if (course != null ? !course.equals(entity.course) : entity.course != null) return false;
+        return birthday != null ? birthday.equals(entity.birthday) : entity.birthday == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (fio != null ? fio.hashCode() : 0);
+        result = 31 * result + (gender != null ? gender.hashCode() : 0);
+        result = 31 * result + (department_id != null ? department_id.hashCode() : 0);
+        result = 31 * result + (course != null ? course.hashCode() : 0);
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
+        return result;
+    }
+
+    private Integer course;
     private LocalDate birthday;
 
     public StudentEntity() {
     }
 
-    public StudentEntity(Long id, String fio, String gender, String faculty, String studentGroupId, LocalDate birthday) {
+    public StudentEntity(Long id, String fio, String gender, Long department_id, Integer course, LocalDate birthday) {
         this.id = id;
         this.fio = fio;
         this.gender = gender;
-        this.department = faculty;
-        this.studentGroupId = studentGroupId;
+        this.department_id = department_id;
+        this.course = course;
         this.birthday = birthday;
     }
 
@@ -46,20 +74,20 @@ public class StudentEntity {
         this.gender = gender;
     }
 
-    public String getDepartment() {
-        return department;
+    public Long getDepartmentId() {
+        return department_id;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setDepartmentId(Long department_id) {
+        this.department_id = department_id;
     }
 
-    public String getStudentGroupId() {
-        return studentGroupId;
+    public Integer getCourse() {
+        return course;
     }
 
-    public void setStudentGroupId(String studentGroupId) {
-        this.studentGroupId = studentGroupId;
+    public void setCourse(Integer course) {
+        this.course = course;
     }
 
     public LocalDate getBirthday() {

@@ -8,6 +8,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ru.liga.dao.DepartmentDao;
+import ru.liga.dao.EmployeeDao;
+import ru.liga.dao.StudentDao;
 
 import javax.sql.DataSource;
 
@@ -46,4 +48,13 @@ public class TestDaoSpringConfig {
         return new DepartmentDao(new JdbcTemplate(dataSource()));
     }
 
+    @Bean
+    public EmployeeDao employeeDao() {
+        return new EmployeeDao(new JdbcTemplate(dataSource()));
+    }
+
+    @Bean
+    public StudentDao studentDao() {
+        return new StudentDao(new JdbcTemplate(dataSource()));
+    }
 }

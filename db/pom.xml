@@ -16,7 +16,7 @@
             <properties>
                 <liquibase.url>jdbc:postgresql://127.0.0.1:5432/postgres</liquibase.url>
                 <liquibase.username>postgres</liquibase.username>
-                <liquibase.password>q</liquibase.password>
+                <liquibase.password>postgres</liquibase.password>
                 <liquibase.schema>liga</liquibase.schema>
                 <liquibase.driver>org.postgresql.Driver</liquibase.driver>
             </properties>
@@ -24,7 +24,8 @@
         <profile>
             <id>sqlite</id>
             <properties>
-                <liquibase.url>jdbc:postgresql://127.0.0.1:5432/postgres?currentSchema=liga</liquibase.url>
+                <liquibase.url>jdbc:sqlite:C:/liga-training/botdb.s3db</liquibase.url>
+                <liquibase.driver>org.sqlite.JDBC</liquibase.driver>
             </properties>
         </profile>
     </profiles>
