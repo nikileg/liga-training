@@ -14,7 +14,7 @@
                 javaType="java.util.ArrayList"
                 column="id"
                 ofType="EmployeeEntity"
-                select="ru.liga.mybatis.dao.EmployeeDao.selectByDepartmentId"
+                select="selectByDepartmentId"
         />
     </resultMap>
 
