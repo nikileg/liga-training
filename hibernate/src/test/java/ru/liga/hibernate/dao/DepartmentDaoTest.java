@@ -44,4 +44,19 @@ public class DepartmentDaoTest {
         assertEquals(1, entities.size());
     }
 
+    @Test
+    public void saveTest() {
+        DepartmentEntity entity = new DepartmentEntity();
+        entity.setTitle("Психологический");
+        entity.setFoundationYear(1948);
+        entity.setAddress("Москва");
+        entity.setEmployees(Arrays.asList(new EmployeeEntity(null, "Chernoded Anton Aleksadrovich", "FEMALE", entity, "MASTER", "postgraduate", LocalDate.now())));
+        departmentDao.save(entity);
+        DepartmentEntity savedEntity = departmentDao.select(entity.getId());
+        assertTrue(
+                savedEntity.getEmployees()
+                        .stream()
+                        .anyMatch(e -> e.getFio().equals("Chernoded Anton Aleksadrovich"))
+        );
+    }
 }
