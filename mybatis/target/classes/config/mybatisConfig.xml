@@ -6,6 +6,7 @@
     <typeAliases>
         <typeAlias type="ru.liga.mybatis.entity.DepartmentEntity" alias="DepartmentEntity"/>
         <typeAlias type="ru.liga.mybatis.entity.EmployeeEntity" alias="EmployeeEntity"/>
+        <typeAlias type="ru.liga.mybatis.entity.StudentEntity" alias="StudentEntity"/>
     </typeAliases>
     <typeHandlers>
         <typeHandler handler="org.apache.ibatis.type.InstantTypeHandler"/>
@@ -24,5 +25,6 @@
     <mappers>
         <mapper resource="dao/DepartmentDao.xml"/>
         <mapper resource="dao/EmployeeDao.xml"/>
+        <mapper resource="dao/StudentDao.xml"/>
     </mappers>
 </configuration>

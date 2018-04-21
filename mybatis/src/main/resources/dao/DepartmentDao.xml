@@ -11,10 +11,17 @@
         <result property="foundationYear" column="foundation_year"/>
         <collection
                 property="employees"
-                javaType="java.util.ArrayList"
+                javaType="java.util.List"
                 column="id"
                 ofType="EmployeeEntity"
-                select="selectByDepartmentId"
+                select="ru.liga.mybatis.dao.EmployeeDao.selectByDepartmentId"
+        />
+        <collection
+                property="students"
+                javaType="java.util.List"
+                column="id"
+                ofType="StudentEntity"
+                select="ru.liga.mybatis.dao.StudentDao.selectByDepartmentId"
         />
     </resultMap>
 

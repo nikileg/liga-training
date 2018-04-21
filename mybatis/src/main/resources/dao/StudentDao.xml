@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapper.java namespace -->
+<mapper namespace="ru.liga.mybatis.dao.StudentDao">
+
+    <resultMap type="ru.liga.mybatis.entity.StudentEntity" id="StudentMap">
+        <id property="id" column="id"/>
+        <result property="fio" column="fio"/>
+        <result property="gender" column="gender"/>
+        <result property="departmentId" column="department_id"/>
+        <result property="course" column="course"/>
+        <result property="birthday" column="birthday"/>
+    </resultMap>
+
+    <insert id="insert"
+            parameterType="StudentEntity"
+            statementType="PREPARED"
+            keyProperty="id"
+            useGeneratedKeys="true">
+        insert into student (fio, gender, course, birthday, department_id)
+        values (
+        #{fio, jdbcType=VARCHAR},
+        #{gender, jdbcType=VARCHAR},
+        #{course, jdbcType=SMALLINT},
+        #{birthday, jdbcType=TIMESTAMP},
+        #{departmentId, jdbcType=BIGINT}
+        )
+    </insert>
+
+    <update id="update" parameterType="StudentEntity">
+        update student
+        set
+            fio = #{fio, jdbcType=VARCHAR},
+            gender = #{gender, jdbcType=VARCHAR},
+            course = #{course, jdbcType=SMALLINT},
+            birthday = #{birthday, jdbcType=TIMESTAMP},
+            department_id = #{departmentId, jdbcType=BIGINT}
+        where id = #{id}
+    </update>
+
+    <select id="select" parameterType="long" resultMap="StudentMap">
+        SELECT * FROM student
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectByDepartmentId" resultMap="StudentMap">
+        SELECT * FROM student WHERE department_id = #{departmentId}
+    </select>
+
+    <delete id="delete" parameterType="long">
+        delete from student where id = #{id}
+    </delete>
+
+</mapper>
