@@ -3,7 +3,7 @@
 
 ---
 ALTER TABLE liga.student
-  ADD COLUMN department_id BIGSERIAL;
+  ADD COLUMN department_id BIGINT;
 
 UPDATE liga.student AS s
 SET department_id = (
