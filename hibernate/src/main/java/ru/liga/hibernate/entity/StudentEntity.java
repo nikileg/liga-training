@@ -1,24 +1,35 @@
 package ru.liga.hibernate.entity;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "student")
 public class StudentEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "fio", nullable = false)
     private String fio;
+    @Column(name = "gender", nullable = false)
     private String gender;
-    private String department;
-    private String studentGroupId;
+    @ManyToOne
+    @JoinColumn(name = "department_id", referencedColumnName = "title", nullable = false)
+    private DepartmentEntity department;
+    @Column(name = "course", nullable = false)
+    private Integer course;
+    @Column(name = "birthday", nullable = false)
     private LocalDate birthday;
 
     public StudentEntity() {
     }
 
-    public StudentEntity(Long id, String fio, String gender, String faculty, String studentGroupId, LocalDate birthday) {
+    public StudentEntity(Long id, String fio, String gender, DepartmentEntity department, Integer course, LocalDate birthday) {
         this.id = id;
         this.fio = fio;
         this.gender = gender;
-        this.department = faculty;
-        this.studentGroupId = studentGroupId;
+        this.department = department;
+        this.course = course;
         this.birthday = birthday;
     }
 
@@ -46,20 +57,20 @@ public class StudentEntity {
         this.gender = gender;
     }
 
-    public String getDepartment() {
+    public DepartmentEntity getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(DepartmentEntity department) {
         this.department = department;
     }
 
-    public String getStudentGroupId() {
-        return studentGroupId;
+    public Integer getCourse() {
+        return course;
     }
 
-    public void setStudentGroupId(String studentGroupId) {
-        this.studentGroupId = studentGroupId;
+    public void setCourse(Integer course) {
+        this.course = course;
     }
 
     public LocalDate getBirthday() {

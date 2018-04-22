@@ -1,11 +1,13 @@
 package ru.liga.hibernate.entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
-
-import static javax.persistence.GenerationType.IDENTITY;
-
 import java.io.Serializable;
 import java.util.List;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "department",  uniqueConstraints = {
@@ -24,6 +26,9 @@ public class DepartmentEntity implements Serializable {
     private Integer foundationYear;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EmployeeEntity> employees;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<StudentEntity> students;
 
 
     public DepartmentEntity(Long id, String title, String address, Integer foundationYear, List<EmployeeEntity> employees, List<StudentEntity> students) {
@@ -32,7 +37,7 @@ public class DepartmentEntity implements Serializable {
         this.address = address;
         this.foundationYear = foundationYear;
         this.employees = employees;
-//        this.students = students;
+        this.students = students;
     }
 
     public DepartmentEntity() {
@@ -77,12 +82,12 @@ public class DepartmentEntity implements Serializable {
     public void setEmployees(List<EmployeeEntity> employees) {
         this.employees = employees;
     }
-//
-//    public List<StudentEntity> getStudents() {
-//        return students;
-//    }
-//
-//    public void setStudents(List<StudentEntity> students) {
-//        this.students = students;
-//    }
+
+    public List<StudentEntity> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<StudentEntity> students) {
+        this.students = students;
+    }
 }
