@@ -10,7 +10,34 @@ public class StudentEntity {
     private Long course;
     private LocalDate birthday;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        StudentEntity that = (StudentEntity) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (fio != null ? !fio.equals(that.fio) : that.fio != null) return false;
+        if (gender != null ? !gender.equals(that.gender) : that.gender != null) return false;
+        if (departmentId != null ? !departmentId.equals(that.departmentId) : that.departmentId != null) return false;
+        if (course != null ? !course.equals(that.course) : that.course != null) return false;
+        return birthday != null ? birthday.equals(that.birthday) : that.birthday == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (fio != null ? fio.hashCode() : 0);
+        result = 31 * result + (gender != null ? gender.hashCode() : 0);
+        result = 31 * result + (departmentId != null ? departmentId.hashCode() : 0);
+        result = 31 * result + (course != null ? course.hashCode() : 0);
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
+        return result;
+    }
+
     public StudentEntity() {
+
     }
 
     public StudentEntity(Long id, String fio, String gender, Long departmentId, Long course, LocalDate birthday) {

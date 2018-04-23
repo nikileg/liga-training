@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface DepartmentDao {
 
-    DepartmentEntity insert(DepartmentEntity entity);
+    void insert(DepartmentEntity entity);
 
-    DepartmentEntity update(DepartmentEntity entity);
+    void update(DepartmentEntity entity);
 
     void delete(Long entityId);
 

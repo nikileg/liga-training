@@ -5,9 +5,9 @@ import ru.liga.mybatis.entity.StudentEntity;
 import java.util.List;
 
 public interface StudentDao {
-    StudentEntity insert(StudentEntity student);
+    void insert(StudentEntity student);
 
-    StudentEntity update(StudentEntity student);
+    void update(StudentEntity student);
 
     void delete(Long studentId);
 
